@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akademik - UM Pontianak</title>
+<meta name="description" content="informasi akademik, jadwal wisuda, kegiatan akademik, akreditasi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>
+  :root{
+    --navy-950:#050b1f;
+    --navy-900:#0a1230;
+    --navy-800:#0f1a44;
+    --navy-700:#152260;
+    --navy-600:#1c2d7a;
+    --gold-500:#d4a72c;
+    --gold-400:#e6c158;
+    --paper:#f7f8fc;
+    --paper-dim:#e9ecf7;
+    --ink:#0a1230;
+    --ink-soft:#4a5178;
+    --line:rgba(255,255,255,0.12);
+    --line-soft:rgba(10,18,48,0.10);
+    --radius:14px;
+    --max:1180px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+
+  /* Skip link for accessibility */
+  .skip-link{
+    position:absolute;left:-9999px;top:0;background:var(--gold-500);color:var(--navy-950);
+    padding:12px 20px;font-weight:700;z-index:200;border-radius:0 0 8px 0;
+  }
+  .skip-link:focus{left:0;}
+
+  /* ===== Header / Nav ===== */
+  header{
+    background:var(--navy-950);
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:100;
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;gap:20px;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:16px;}
+  .logo-mark{
+    width:56px;height:56px;border-radius:50%;
+    background:linear-gradient(155deg,var(--navy-700),var(--navy-900));
+    border:2px solid var(--gold-500);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    font-weight:800;font-size:13px;color:var(--gold-400);letter-spacing:0.5px;
+    text-align:center;line-height:1.1;
+  }
+  .brand-text{color:#fff;}
+  .brand-text .uni{font-weight:800;font-size:1.02rem;letter-spacing:0.3px;}
+  .brand-text .unit{font-size:0.82rem;color:#aeb6d6;font-weight:500;margin-top:2px;}
+
+  nav.top-links{display:flex;gap:28px;flex-wrap:wrap;}
+  nav.top-links a{
+    color:#c4cae8;font-weight:600;font-size:0.98rem;
+    padding:8px 2px;border-bottom:2px solid transparent;
+    transition:color .15s, border-color .15s;
+  }
+  nav.top-links a:hover, nav.top-links a:focus-visible{color:#fff;border-color:var(--gold-500);}
+
+  /* ===== Hero ===== */
+  .hero{
+    background:
+      radial-gradient(1100px 480px at 85% -10%, rgba(212,167,44,0.14), transparent 60%),
+      linear-gradient(180deg, var(--navy-950) 0%, var(--navy-900) 60%, var(--navy-800) 100%);
+    color:#fff;
+    padding:76px 0 88px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:0.35;
+    mask-image:linear-gradient(180deg, transparent, #000 15%, #000 70%, transparent);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative;z-index:2;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    color:var(--gold-400);font-weight:700;font-size:0.88rem;
+    letter-spacing:1.6px;text-transform:uppercase;margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:28px;height:2px;background:var(--gold-500);display:inline-block;}
+  h1{
+    font-size:clamp(2.3rem, 4.6vw, 3.6rem);
+    font-weight:800;
+    line-height:1.12;
+    max-width:16ch;
+    letter-spacing:-0.5px;
+  }
+  .hero p.lede{
+    margin-top:22px;
+    font-size:1.18rem;
+    color:#c4cae8;
+    max-width:56ch;
+    font-weight:400;
+  }
+  .hero-meta{
+    margin-top:36px;
+    display:flex;gap:14px;flex-wrap:wrap;
+  }
+  .pill{
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line);
+    padding:10px 18px;
+    border-radius:100px;
+    font-size:0.92rem;
+    font-weight:600;
+    color:#d7dcf3;
+    display:flex;align-items:center;gap:8px;
+  }
+  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--gold-500);flex-shrink:0;}
+
+  /* ===== Section shell ===== */
+  section{padding:64px 0;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:20px;flex-wrap:wrap;margin-bottom:36px;
+  }
+  .section-tag{
+    font-size:0.85rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;
+    color:var(--gold-500);margin-bottom:10px;display:block;
+  }
+  .section-head h2{
+    font-size:clamp(1.6rem, 3vw, 2.15rem);
+    font-weight:800;color:var(--navy-950);letter-spacing:-0.3px;
+    max-width:22ch;
+  }
+  .section-head .desc{color:var(--ink-soft);font-size:1.02rem;max-width:44ch;}
+
+  /* ===== Links grid ===== */
+  .links-section{background:var(--paper);}
+  .link-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:18px;
+  }
+  .link-card{
+    background:#fff;
+    border:1px solid var(--line-soft);
+    border-left:4px solid var(--navy-700);
+    border-radius:var(--radius);
+    padding:26px 24px;
+    display:flex;flex-direction:column;gap:10px;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .link-card:hover, .link-card:focus-within{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px -14px rgba(10,18,48,0.28);
+    border-left-color:var(--gold-500);
+  }
+  .link-card .link-title{
+    font-weight:700;font-size:1.12rem;color:var(--navy-950);
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+  }
+  .link-card .arrow{color:var(--gold-500);font-size:1.2rem;transition:transform .18s ease;}
+  .link-card:hover .arrow{transform:translateX(4px);}
+  .link-card .link-desc{color:var(--ink-soft);font-size:0.96rem;}
+  .link-card a.card-link{position:absolute;inset:0;}
+  .link-card{position:relative;}
+
+  .placeholder-note{
+    margin-top:24px;
+    padding:16px 20px;
+    background:var(--paper-dim);
+    border:1px dashed #b7bfe0;
+    border-radius:10px;
+    font-size:0.94rem;
+    color:var(--ink-soft);
+  }
+  .placeholder-note strong{color:var(--navy-800);}
+
+  /* ===== Jadwal / Academic calendar ===== */
+  .calendar-section{background:var(--navy-950);color:#fff;}
+  .calendar-section .section-tag{color:var(--gold-400);}
+  .calendar-section .section-head h2{color:#fff;}
+  .calendar-section .section-head .desc{color:#aeb6d6;}
+
+  .table-shell{
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  table{width:100%;border-collapse:collapse;}
+  thead th{
+    text-align:left;
+    font-size:0.85rem;
+    text-transform:uppercase;
+    letter-spacing:0.8px;
+    color:var(--gold-400);
+    font-weight:700;
+    padding:18px 22px;
+    background:rgba(255,255,255,0.04);
+    border-bottom:1px solid var(--line);
+  }
+  tbody td{
+    padding:20px 22px;
+    border-bottom:1px solid var(--line);
+    font-size:1rem;
+    color:#e2e5f5;
+    vertical-align:top;
+  }
+  tbody tr:last-child td{border-bottom:none;}
+  tbody td.event-name{font-weight:700;color:#fff;}
+  .tag-status{
+    display:inline-block;
+    padding:4px 12px;
+    border-radius:100px;
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:0.3px;
+  }
+  .tag-status.upcoming{background:rgba(212,167,44,0.18);color:var(--gold-400);}
+  .tag-status.ongoing{background:rgba(88,180,120,0.18);color:#7ee2a0;}
+  .tag-status.done{background:rgba(255,255,255,0.08);color:#9aa2c4;}
+
+  /* ===== Akreditasi ===== */
+  .accred-section{background:var(--paper);}
+  .accred-hero-card{
+    background:linear-gradient(135deg, var(--navy-800), var(--navy-700));
+    color:#fff;
+    border-radius:var(--radius);
+    padding:34px 32px;
+    margin-bottom:24px;
+    display:flex;align-items:center;gap:26px;flex-wrap:wrap;
+    justify-content:space-between;
+  }
+  .accred-hero-card .label{font-size:0.9rem;color:#c4cae8;font-weight:600;letter-spacing:0.4px;text-transform:uppercase;}
+  .accred-hero-card .rank{
+    font-size:3.2rem;font-weight:900;color:var(--gold-400);line-height:1;margin-top:6px;
+  }
+  .accred-hero-card .badge-sk{
+    font-size:0.92rem;color:#c4cae8;max-width:32ch;
+  }
+
+  .accred-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:16px;
+  }
+  .accred-card{
+    background:#fff;
+    border:1px solid var(--line-soft);
+    border-radius:var(--radius);
+    padding:22px 24px;
+    display:flex;flex-direction:column;align-items:flex-start;
+    gap:12px;
+  }
+  .accred-rank-chip{
+    flex-shrink:0;
+    min-width:46px;height:32px;border-radius:8px;
+    padding:0 12px;
+    background:var(--navy-950);color:var(--gold-400);
+    display:inline-flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:0.85rem;letter-spacing:0.3px;
+  }
+  .accred-rank-chip.baik-sekali{background:#dde6f7;color:#15316e;}
+  .accred-rank-chip.baik{background:#eef4ec;color:#3b7a45;}
+  .accred-rank-chip.unggul{background:var(--navy-950);color:var(--gold-400);}
+  .accred-card .prodi-name{
+    font-weight:700;font-size:1.05rem;color:var(--navy-950);
+    display:inline-flex;align-items:center;gap:8px;
+    text-decoration:underline;text-decoration-color:transparent;
+    text-underline-offset:3px;
+    transition:color .15s ease, text-decoration-color .15s ease;
+  }
+  .accred-card .prodi-name:hover,
+  .accred-card .prodi-name:focus-visible{
+    color:var(--navy-700);
+    text-decoration-color:var(--gold-500);
+  }
+  .accred-card .prodi-name .cert-icon{
+    font-size:0.85rem;color:var(--gold-500);flex-shrink:0;
+  }
+  .accred-card .prodi-fak{font-size:0.9rem;color:var(--ink-soft);}
+
+  /* ===== Contact / Footer ===== */
+  footer{
+    background:var(--navy-950);
+    color:#aeb6d6;
+    padding:56px 0 30px;
+    border-top:1px solid var(--line);
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:36px;
+    border-bottom:1px solid var(--line);
+  }
+  .footer-brand{display:flex;gap:14px;align-items:flex-start;}
+  .footer-brand .logo-mark{width:48px;height:48px;font-size:11px;}
+  .footer-brand .uni-full{color:#fff;font-weight:700;font-size:1rem;line-height:1.4;}
+  .footer-brand .unit-full{font-size:0.9rem;margin-top:6px;color:#9aa2c4;}
+  footer h3{
+    font-size:0.85rem;text-transform:uppercase;letter-spacing:0.8px;
+    color:var(--gold-400);font-weight:700;margin-bottom:16px;
+  }
+  footer .contact-item{margin-bottom:10px;font-size:0.96rem;line-height:1.5;}
+  footer .contact-item .k{color:#7d85ad;display:block;font-size:0.8rem;margin-bottom:2px;}
+  .footer-bottom{
+    padding-top:26px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-size:1rem;color:#7d85ad;
+    font-weight: 700;
+  }
+
+  @media (max-width:760px){
+    body{font-size:17px;}
+    .header-inner{padding:16px 20px;}
+    nav.top-links{gap:16px;width:100%;justify-content:flex-start;order:3;}
+    nav.top-links a{font-size:0.9rem;}
+    .hero{padding:52px 0 60px;}
+    section{padding:48px 0;}
+    .footer-grid{grid-template-columns:1fr;gap:28px;}
+    thead th:nth-child(3), tbody td:nth-child(3){display:none;}
+    .accred-hero-card{padding:26px 22px;}
+  }
+
+  :focus-visible{outline:3px solid var(--gold-500);outline-offset:2px;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .link-card, .arrow{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<a href="#konten" class="skip-link">Langsung ke konten</a>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <img src="logo_ump.png" alt="Logo Universitas Muhammadiyah Pontianak" style="width:56px;height:56px;border-radius:50%;">
+      <div class="brand-text">
+        <div class="uni">Universitas Muhammadiyah Pontianak</div>
+        <div class="unit">Urusan Akademik &amp; Registrasi</div>
+      </div>
+    </div>
+    <nav class="top-links" aria-label="Navigasi utama">
+      <a href="#tautan">Tautan Layanan</a>
+      <a href="#jadwal">Jadwal Akademik</a>
+      <a href="#akreditasi">Akreditasi</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<main id="konten">
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <span class="eyebrow">Tahun Akademik 2026/2027</span>
+      <h1>Pusat Informasi Akademik &amp; Registrasi</h1>
+      <p class="lede">Selamat datang di laman resmi Urusan Akademik &amp; Registrasi, Biro Administrasi Akademik dan Kemahasiswaan (BAAK) Universitas Muhammadiyah Pontianak.</p>
+      <div class="hero-meta">
+        <span class="pill"><span class="dot"></span> Semester Ganjil T.A. 2026/2027</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="tautan" class="links-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Tautan Layanan</span>
+          <h2>Layanan Akademik</h2>
+        </div>
+        <p class="desc">Kumpulan informasi resmi sistem dan layanan akademik.</p>
+      </div>
+
+      <div class="link-grid">
+        <div class="link-card">
+          <div class="link-title">Panduan Penerimaan Mahasiswa Baru <span class="arrow">&rarr;</span></div>
+          <p class="link-desc">Panduan lengkap alur pendaftaran mahasiswa baru.</p>
+          <a class="card-link" href="#" target="_blank" rel="noopener">&nbsp;</a>
+        </div>
+        <div class="link-card">
+          <div class="link-title">Pedoman Akademik Mahasiswa <span class="arrow">&rarr;</span></div>
+          <p class="link-desc">Aturan dan panduan kegiatan akademik mahasiswa.</p>
+          <a class="card-link" href="#" target="_blank" rel="noopener">&nbsp;</a>
+        </div>
+        <div class="link-card">
+          <div class="link-title">Pedoman Penyelenggaraan RPL <span class="arrow">&rarr;</span></div>
+          <p class="link-desc">Ketentuan tata cara penyetaraan rekognisi pembelajaran.</p>
+          <a class="card-link" href="https://drive.google.com/file/d/1cp9Fq-pOIBLJOvfohBpn2Jyn7cfvcfDC/view?usp=sharing" aria-label="Buka E-Learning" target="_blank" rel="noopener">&nbsp;</a>
+        </div>
+        <div class="link-card">
+          <div class="link-title">Prosedur Pengambilan Ijazah & Transkrip Nilai <span class="arrow">&rarr;</span></div>
+          <p class="link-desc">Tahapan dan syarat pengambilan dokumen kelulusan.</p>
+          <a class="card-link" href="#" target="_blank" rel="noopener">&nbsp;</a>
+        </div>
+        <div class="link-card">
+          <div class="link-title">Survey Kepuasan Akademik <span class="arrow">&rarr;</span></div>
+          <p class="link-desc">Evaluasi kualitas layanan dan kegiatan akademik.</p>
+          <a class="card-link" href="https://forms.gle/uB5pWn37qJccHHsF8" target="_blank" rel="noopener">&nbsp;</a>
+        </div>
+        <div class="link-card">
+          <div class="link-title">Informasi PMB <span class="arrow">&rarr;</span></div>
+          <p class="link-desc">Pusat informasi syarat dan jalur masuk.</p>
+          <a class="card-link" href="https://pmb.unmuhpnk.ac.id/" target="_blank" rel="noopener">&nbsp;</a>
+        </div>
+        <div class="link-card">
+          <div class="link-title">Pendaftaran PMB (Admisi)</div>
+          <p class="link-desc">Portal resmi pendaftaran calon mahasiswa baru.</p>
+          <a class="card-link" href="https://admisi.unmuhpnk.ac.id/" target="_blank" rel="noopener">&nbsp;</a>
+        </div>
+        <div class="link-card">
+          <div class="link-title">Nomor Rekening UMP <span class="arrow">&rarr;</span></div>
+          <p class="link-desc">Daftar rekening resmi pembayaran biaya kuliah.</p>
+          <a class="card-link" href="https://drive.google.com/file/d/1svijELTe8-tKJfW6cOnCRCTxBwxQ0ypS/view?usp=sharing" target="_blank" rel="noopener">&nbsp;</a>
+        </div>
+      </div>
+
+      <!-- <div class="placeholder-note">
+        <strong>Catatan:</strong> &nbsp;
+      </div> -->
+    </div>
+  </section>
+
+  <section id="jadwal" class="calendar-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Kalender Akademik</span>
+          <h2>Jadwal Kegiatan Akademik</h2>
+        </div>
+        <p class="desc">Tanggal-tanggal penting semester berjalan.</p>
+      </div>
+
+      <div class="table-shell">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Kegiatan</th>
+              <th scope="col">Tanggal</th>
+              <th scope="col">Keterangan</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="event-name">Pendaftaran Calon Mahasiswa Baru</td>
+              <td>03 Maret &ndash; 31 Agustus 2026</td>
+              <td>Registrasi, verifikasi dan validasi berkas</td>
+              <td><span class="tag-status done">Selesai</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Her-Registrasi Mahasiswa Baru</td>
+              <td>03 Febuari &ndash; 05 September 2026</td>
+              <td>Daftar ulang mahasiswa baru</td>
+              <td><span class="tag-status done">Selesai</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Her-Registrasi Mahasiswa Lama</td>
+              <td>27 Juli &ndash; 31 Agustus 2026</td>
+              <td>Daftar ulang mahasiswa</td>
+              <td><span class="tag-status done">Selesai</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Konsultasi dan Pengisian KRS</td>
+              <td>24 Agustus &ndash; 06 September 2026</td>
+              <td>Bimbingan bersama dosen PA untuk rencana studi</td>
+              <td><span class="tag-status done">Selesai</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Pembinaan Akademik dan Kemuhammadiyahan Mahasiswa Baru (PAKMABA)</td>
+              <td>31 Agustus 2026 &ndash; 01 September 2026</td>
+              <td>Kuliah perdana mahasiswa baru</td>
+              <td><span class="tag-status done">Selesai</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Awal Perkuliahan Semester Ganjil</td>
+              <td>07 September 2026</td>
+              <td>Kegiatan perkuliahan luring dan daring</td>
+              <td><span class="tag-status ongoing">Berjalan</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Batas Akhir Revisi KRS dan Pengajuan Cuti Akademik</td>
+              <td>11 September 2026</td>
+              <td>Perbaikan rencana studi, dan pengajuan cuti</td>
+              <td><span class="tag-status done">Selesai</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Batas Akhir Penyerahan Berkas Yudisium 2 T.A. 2025/2026</td>
+              <td>31 Agustus 2026</td>
+              <td>Penyampaian calon peserta wisuda Tahap 2 Tahun 2026</td>
+              <td><span class="tag-status done">Selesai</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Wisuda Sarjana Tahap 2 T.A. 2025/2026</td>
+              <td>17 Oktober 2026</td>
+              <td>Wisuda tahap 2 Tahun 2026</td>
+              <td><span class="tag-status upcoming">Segera</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Batas Akhir Sidang Skripsi Yudisium 1</td>
+              <td>19 November 2026</td>
+              <td>Batas Sidang Skripsi</td>
+              <td><span class="tag-status upcoming">Segera</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Batas Akhir Penyerahan Berkas Yudisium 1</td>
+              <td>20 November 2026</td>
+              <td>Penyerahan berkas Yudisium ke BAAK</td>
+              <td><span class="tag-status upcoming">Segera</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Batas Akhir Sidang Skripsi Yudisium 2</td>
+              <td>08 Januari 2027</td>
+              <td>Batas sidang skripsi</td>
+              <td><span class="tag-status upcoming">Segera</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Batas Akhir Penyerahan Berkas Yudisium 2</td>
+              <td>09 Januari 2027</td>
+              <td>Penyerahan berkas Yudisium ke BAAK</td>
+              <td><span class="tag-status upcoming">Segera</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Hari Terakhir Perkuliahan</td>
+              <td>08 Januari 2027</td>
+              <td>Selesai Semester Ganjil T.A. 2026/2027</td>
+              <td><span class="tag-status upcoming">Segera</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Batas Akhir Pengisian Nilai</td>
+              <td>12 Febuari 2027</td>
+              <td>Pengisian nilai akhir mahasiswa</td>
+              <td><span class="tag-status upcoming">Segera</span></td>
+            </tr>
+            <tr>
+              <td class="event-name">Wisuda Sarjana Tahap 1</td>
+              <td>17 atau 24 April 2027</td>
+              <td>Wisuda sarja tahap 1 Tahun 2027</td>
+              <td><span class="tag-status upcoming">Segera</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- <div class="placeholder-note" style="background:rgba(255,255,255,0.04);border-color:var(--line);color:#aeb6d6;">
+        <strong>Catatan:</strong> &nbsp;
+      </div> -->
+    </div>
+  </section>
+
+  <section id="akreditasi" class="accred-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Akreditasi</span>
+          <h2>Status Akreditasi</h2>
+        </div>
+        <p class="desc">Peringkat akreditasi berdasarkan SK BAN-PT / LAM.</p>
+      </div>
+
+      <div class="accred-hero-card">
+        <div>
+          <div class="label">Universitas Muhammadiyah Pontianak</div>
+          <div class="rank"><a href="https://drive.google.com/file/d/15hpJrdzc67eL_LSayCg8W6u7isW8x7sE/view?usp=drive_link" target="_blank" rel="noopener">B</a></div>
+        </div>
+        <div class="badge-sk">Akreditasi Insitusi berdasarkan SK BAN-PT Nomor 1104/SK/BAN-PT/Ak-PPJ/PT/XII/2021, berlaku hingga 28 Desember 2026.</div>
+      </div>
+
+      <div class="accred-grid">
+        <div class="accred-card">
+          <div class="accred-rank-chip baik-sekali">Baik Sekali</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/13NhxS6l03L6w9JX2hIJr5VgMDr4CU0GL/view?usp=drive_link" target="_blank" rel="noopener">Bisnis Digital</a>
+          <div class="prodi-fak">Fakultas Ekonomi dan Bisnis</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip baik-sekali">Baik Sekali</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1iaH4j_Ef9zehnp92ZWfCJvLLlDeS3gUr/view?usp=drive_link" target="_blank" rel="noopener">Budidaya Perairan</a>
+          <div class="prodi-fak">Fakultas Perikanan dan Ilmu Kelautan</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip baik">Baik</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1rxDFehqQ_jNJfp1e15aPTfbPSrKMfvrv/view?usp=drive_link" target="_blank" rel="noopener">Ilmu Hukum</a>
+          <div class="prodi-fak">Fakultas Ilmu Hukum</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip unggul">Unggul</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1IRSxi_XSEFxGJFTi6a3Eu-f6YxYeqLeg/view?usp=drive_link" target="_blank" rel="noopener">Ilmu Kesehatan Masyarakat</a>
+          <div class="prodi-fak">Fakultas Ilmu Kesehatan dan Psikologi</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip baik-sekali">Baik Sekali</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1hBhpKCfe-67nqHHhiwQChK8qx00be9cF/view?usp=drive_link" target="_blank" rel="noopener">Kesehatan Masyarakat K. Sintang</a>
+          <div class="prodi-fak">Fakultas Ekonomi, Bisnis, dan Kesehatan</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip baik">Terakreditasi Pertama</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1J6I-Fa11qS0l1FrTPJwjjzX3KyDUR6X5/view?usp=drive_link" target="_blank" rel="noopener">Kesehatan Masyarakat (S2)</a>
+          <div class="prodi-fak">Fakultas Ilmu Kesehatan dan Psikologi</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip baik-sekali">Baik Sekali</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1lqMc_tnfo6ryJgZGE4gXaF8JAWaIPpO8/view?usp=drive_link" target="_blank" rel="noopener">Manajemen</a>
+          <div class="prodi-fak">Fakultas Ekonomi dan Bisnis</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip baik">Baik</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1xDn2W_Z6CsKL2LDCYHTBpggnLFIA2rN-/view?usp=drive_link" target="_blank" rel="noopener">Manajemen Bisnis Syariah</a>
+          <div class="prodi-fak">Fakultas Agama Islam</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip baik">Baik</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1YeTuYs803rfM_zUArb5r36C_c3YK8TkQ/view?usp=drive_link" target="_blank" rel="noopener">Manajemen K. Sintang</a>
+          <div class="prodi-fak">Fakultas Ekonomi, Bisnis, dan Kesehatan</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip baik">Baik</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/13xsHq8UqNt3b3iOJlTw9gf69NlRpPKeI/view?usp=drive_link" target="_blank" rel="noopener">Manajemen (S2)</a>
+          <div class="prodi-fak">Fakultas Ekonomi dan Bisnis</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip baik-sekali">B</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1InwPcczfXVURdh_knU_1l8w079Lu3s66/view?usp=drive_link" target="_blank" rel="noopener">Pendidikan Agama Islam</a>
+          <div class="prodi-fak">Fakultas Agama Islam</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip unggul">Unggul</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1Ehjx6fSXtnVljPMhEHZdrnWIgamq12CH/view?usp=drive_link" target="_blank" rel="noopener">Pendidikan Biologi</a>
+          <div class="prodi-fak">Fakultas Keguruan dan Ilmu Pendidikan</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip unggul">Unggul</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1CNh2esN-q8IvIR5txHlOemaBQY6YL6JC/view?usp=drive_link" target="_blank" rel="noopener">Pendidikan Kimia</a>
+          <div class="prodi-fak">Fakultas Keguruan dan Ilmu Pendidikan</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip unggul">Unggul</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1vDUhCLh5dt24FuBd9Iz5j433x1Gib-kY/view?usp=drive_link" target="_blank" rel="noopener">Pendidikan Guru PAUD</a>
+          <div class="prodi-fak">Fakultas Keguruan dan Ilmu Pendidikan</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip baik">Baik</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1fNy8U7yrOTA-6K8KriQB4KjopqMI4pld/view?usp=drive_link" target="_blank" rel="noopener">Pendidikan Profesi Guru</a>
+          <div class="prodi-fak">Fakultas Keguruan dan Ilmu Pendidikan</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip baik">Baik</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1TAjT9bTK74l5q-MzGaHSQm1CL04Wc9PS/view?usp=drive_link" target="_blank" rel="noopener">Psikologi</a>
+          <div class="prodi-fak">Fakultas Ilmu Kesehatan dan Psikologi</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip baik">Baik</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1Z36ocIxeIn915m49hvz_ewC_OPFn0t7H/view?usp=drive_link" target="_blank" rel="noopener">Sistem Informasi</a>
+          <div class="prodi-fak">Fakultas Teknik dan Ilmu Komputer</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip baik">Baik</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1NqlKdGHlG8qea2e4gV93XsrFeyWczk-r/view?usp=drive_link" target="_blank" rel="noopener">Teknik Informatika</a>
+          <div class="prodi-fak">Fakultas Teknik dan Ilmu Komputer</div>
+        </div>
+        <div class="accred-card">
+          <div class="accred-rank-chip baik-sekali">Baik Sekali</div>
+          <a class="prodi-name" href="https://drive.google.com/file/d/1Kqrj4ZtPrwC6_l5Xzc-Un9i2eNiJ4a3a/view?usp=drive_link" target="_blank" rel="noopener">Teknik Mesin</a>
+          <div class="prodi-fak">Fakultas Teknik dan Ilmu Komputer</div>
+        </div>
+      </div>
+      <!-- <div class="placeholder-note">
+        <strong>Catatan:</strong> &nbsp;
+      </div> -->
+    </div>
+  </section>
+
+</main>
+
+<footer id="kontak">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo_ump.png" alt="Logo Universitas Muhammadiyah Pontianak" style="width:56px;height:56px;border-radius:50%;">
+        <div>
+          <div class="uni-full">Universitas Muhammadiyah Pontianak</div>
+          <div class="unit-full">Urusan Akademik &amp; Registrasi</div>
+        </div>
+      </div>
+      <div>
+        <h3>Kontak</h3>
+        <div class="contact-item"><span class="k">Alamat</span>Jl. Jenderal Ahmad Yani No. 111, Pontianak, Kalimantan Barat, 78124</div>
+        <div class="contact-item"><span class="k">Situs</span><a href="https://unmuhpnk.ac.id" target="_blank">unmuhpnk.ac.id</a></div>
+        <div class="contact-item"><span class="k">Email</span><a href="mailto:kontak@unmuhpnk.ac.id">kontak@unmuhpnk.ac.id</a></div>
+      </div>
+      <div>
+        <h3>Jam Layanan</h3>
+        <div class="contact-item">Senin s/d Jum'at: 08.00 &ndash; 16.00 WIB</div>
+        <div class="contact-item">Sabtu &ndash; Minggu &amp; Tanggal Merah: Libur</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026</span>
+      <span>Dikelola oleh Andri Restandi</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
